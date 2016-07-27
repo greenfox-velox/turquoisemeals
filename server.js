@@ -1,21 +1,15 @@
 'use strict';
 
 const db = require('./db');
+var con = require('./CONFIG');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var connection = con.con;
 app.use(bodyParser.json());
 app.use(express.static('client'));
-var mysql = require('mysql');
 
-var con = mysql.createConnection({
-  database: 'caloriecounter',
-  host: 'localhost',
-  user: 'root',
-  password: 'velox'
-});
-
-con.connect(function(err){
+connection.connect(function(err){
   if(err){
     console.log("Error connecting to Db");
     return;
@@ -23,7 +17,7 @@ con.connect(function(err){
   console.log("Connection established");
 });
 
-var myMeals = db(con);
+var myMeals = db(connection);
 
 app.post('/meals', function(req, res) {
   myMeals.addMeal(req.body, function (result) {

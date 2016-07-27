@@ -1,4 +1,4 @@
-var Meals = (function (con) {
+var Meals = (function (connection) {
 
   function errorHandler(err) {
     if(err) {
@@ -8,9 +8,9 @@ var Meals = (function (con) {
   }
 
   function publicAddMeal (meal, cb) {
-    con.query('INSERT INTO meals SET ?', meal, function(err,row){
+    connection.query('INSERT INTO meals SET ?', meal, function(err,row){
       errorHandler(err);
-      if (row !== undefined && row.affectedRows === 1) {
+      if (row !== undefined && row.affectedRows) {
         cb({"status": "ok", "meal": {"id": row.insertId, "name": meal.name, "calories": meal.calories, "date": meal.date}});
       } else {
         cb(row);
@@ -19,16 +19,16 @@ var Meals = (function (con) {
   }
 
   function publicGetMeal (cb) {
-    con.query('SELECT * FROM meals;',function(err,rows){
+    connection.query('SELECT * FROM meals;',function(err,rows){
       errorHandler(err);
       cb({"meals":rows});
     });
   }
 
   function publicDelMeal (id, cb) {
-    con.query('DELETE FROM meals WHERE id = ?', id, function(err,row){
+    connection.query('UPDATE meals SET deleted = true WHERE id = ?', id, function(err,row){
       errorHandler(err);
-      if (row.affectedRows === 1) {
+      if (row.affectedRows) {
         cb({"status": "ok", "meal": {"id": id}});
       } else {
         cb({"status": "not exists"});
@@ -37,7 +37,7 @@ var Meals = (function (con) {
   }
 
   function publicFilterMeals (date, cb) {
-    con.query('SELECT * FROM meals WHERE meals.date LIKE ' + '"' + date + '%' + '";', function(err,rows){
+    connection.query('SELECT * FROM meals WHERE meals.date LIKE ' + '"' + date + '%' + '";', function(err,rows){
       errorHandler(err);
       cb(rows);
     });
