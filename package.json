@@ -1,0 +1,41 @@
+{
+  "name": "turquoisemeals",
+  "version": "1.0.0",
+  "description": "Turquoise calorie counter",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenfox-velox/turquoisemeals.git"
+  },
+  "keywords": [
+    "calorie",
+    "counter",
+    "turquoise",
+    "aron",
+    "petya",
+    "zoli"
+  ],
+  "author": "Turquoise production ltd.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greenfox-velox/turquoisemeals/issues"
+  },
+  "homepage": "https://github.com/greenfox-velox/turquoisemeals#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mysql": "^2.11.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.9.2",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "sinon": "^1.17.4",
+    "tape": "^4.6.0"
+  }
+}
