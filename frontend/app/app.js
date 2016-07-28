@@ -1,4 +1,9 @@
 var myMealApp = angular.module('turqoiseMealApp', ['ngRoute']);
+var now = new Date();
+
+function setFilterDate() {
+  document.querySelector('#addDate').valueAsNumber = now.getTime();
+};
 
 myMealApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -35,5 +40,6 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
 
   $http.get('data/meals.json').success(function(data) {
     $scope.meals = data;
+    setFilterDate();
   })
 }]);
