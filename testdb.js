@@ -75,12 +75,13 @@ tape('filterMeals calls query with proper sql', function (t) {
   };
   var testMealModule = meal(mockConnection);
 
-  var date = new Date(1980, 6, 26, 12, 20);
+  var date = 'date';
 
-  var expectedSQL = 'SELECT * FROM meals WHERE meals.date LIKE Sat Jul 26 1980 12:20:00 GMT+0200 (CEST)%;';
+  var expectedSQL = 'SELECT * FROM meals WHERE meals.date LIKE ?;';
+  var expectedDate = 'date%';
 
   testMealModule.filterMeals(date);
-  t.ok(mockConnection.query.calledWithMatch(expectedSQL, date));
+  t.ok(mockConnection.query.calledWithMatch(expectedSQL, expectedDate));
   t.end();
 });
 
