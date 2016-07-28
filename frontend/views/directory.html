@@ -5,15 +5,15 @@
   <p>{{message}}</p>
   <input type="text" ng-model="search" placeholder="valami"/>
   <ul>
-    <li ng-repeat="ninja in ninjas | orderBy: order | filter: search" ng-hide="ninja.deleted">
-      <h3>{{ninja.name}} - {{ninja.calories}} - {{ninja.date}}</h3>
-      <div class="remove" ng-click="removeNinja(ninja)">x</div>
+    <li ng-repeat="meal in meals | orderBy: order | filter: search" ng-hide="meal.deleted">
+      <h3>{{meal.name}} - {{meal.calories}} - {{meal.date | date}}</h3>
+      <div class="remove" ng-click="removeMeal(meal)">x</div>
     </li>
   </ul>
-  <form ng-submit="addNinja()">
-    <input type="text" placeholder="name" ng-model="newninja.name" />
-    <input type="text" placeholder="calories" ng-model="newninja.calories" />
-    <input type="text" placeholder="date" ng-model="newninja.date" />
+  <form ng-submit="addMeal()">
+    <input type="text" placeholder="name" ng-model="newMeal.name" />
+    <input type="text" placeholder="calories" ng-model="newMeal.calories" />
+    <input id="addDate" type="date" placeholder="date" ng-model="newMeal.date" />
     <input type="submit" value="Add new one" />
   </form>
 </div>
