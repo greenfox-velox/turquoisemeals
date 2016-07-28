@@ -20,7 +20,9 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     $scope.meals.splice(removedMeal, 1);
   }
 
-  $scope.newMeal.date = (new Date()).getTime();
+  $scope.newMeal = {
+    date: new Date()
+  }
 
   $scope.addMeal = function() {
     $scope.meals.push({
@@ -34,6 +36,7 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     $scope.newMeal.calories = "";
     $scope.newMeal.date = "";
   }
+
 
   $http.get('http://localhost:3000/meals').success(function(data) {
     $scope.meals = data.meals;
