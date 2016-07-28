@@ -1,23 +1,15 @@
 'use strict';
 
 const db = require('./db');
-var con = require('./CONFIG');
+var connect = require('./connect');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var connection = con.con;
+
 app.use(bodyParser.json());
 app.use(express.static('frontend'));
 
-connection.connect(function(err){
-  if(err){
-    console.log("Error connecting to Db");
-    return;
-  }
-  console.log("Connection established");
-});
-
-var myMeals = db(connection);
+var myMeals = db(connect.connection);
 
 app.post('/meals', function(req, res) {
   myMeals.addMeal(req.body, function (result) {
