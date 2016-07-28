@@ -62,7 +62,7 @@ tape('delMeal calls query with proper sql', function (t) {
 
   var id = 2;
 
-  var expectedSQL = 'DELETE FROM meals WHERE id = ?';
+  var expectedSQL = 'UPDATE meals SET deleted = true WHERE id = ?';
 
   testMealModule.delMeal(id);
   t.ok(mockConnection.query.calledWithMatch(expectedSQL, 2));
@@ -77,10 +77,10 @@ tape('filterMeals calls query with proper sql', function (t) {
 
   var date = new Date(1980, 6, 26, 12, 20);
 
-  var expectedSQL = 'SELECT * FROM meals WHERE meals.date LIKE "Sat Jul 26 1980 12:20:00 GMT+0200 (Közép-európai nyári idő )%"';
+  var expectedSQL = 'SELECT * FROM meals WHERE meals.date LIKE Sat Jul 26 1980 12:20:00 GMT+0200 (CEST)%;';
 
   testMealModule.filterMeals(date);
-  t.ok(mockConnection.query.calledWithMatch(expectedSQL));
+  t.ok(mockConnection.query.calledWithMatch(expectedSQL, date));
   t.end();
 });
 
