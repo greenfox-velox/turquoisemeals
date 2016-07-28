@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var connection = con.con;
 app.use(bodyParser.json());
-app.use(express.static('client'));
+app.use(express.static('frontend'));
 
 connection.connect(function(err){
   if(err){

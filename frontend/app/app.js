@@ -38,8 +38,7 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     $scope.newMeal.date = "";
   }
 
-  $http.get('data/meals.json').success(function(data) {
-    $scope.meals = data;
-    setFilterDate();
+  $http.get('http://localhost:3000/meals').success(function(data) {
+    $scope.meals = data.meals;
   })
 }]);
