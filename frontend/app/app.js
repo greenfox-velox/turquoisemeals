@@ -20,21 +20,28 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     $scope.meals.splice(removedMeal, 1);
   }
 
+  formatDate = function(date) {
+    return (date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.getHours() + '-' + date.getMinutes());
+  }
+
   $scope.newMeal = {
     date: new Date()
   }
 
   $scope.addMeal = function() {
-    $scope.meals.push({
-        name: $scope.newMeal.name,
-        calories: $scope.newMeal.calories,
-        date: $scope.newMeal.date,
-        deleted: false
-    });
+    var mealToAdd = {
+      name: $scope.newMeal.name,
+      calories: $scope.newMeal.calories,
+      date: formatDate($scope.newMeal.date),
+      deleted: false
+    }
+    $scope.meals.push(mealToAdd);
 
     $scope.newMeal.name = "";
     $scope.newMeal.calories = "";
-    $scope.newMeal.date = "";
+    $scope.newMeal.date = new Date();
+    $http.post('http://localhost:3000/meals', mealToAdd).success(function(data) {})
+
   }
 
 
