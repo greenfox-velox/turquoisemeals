@@ -18,6 +18,9 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
   $scope.removeMeal = function(meal) {
     var removedMeal = $scope.meals.indexOf(meal);
     $scope.meals.splice(removedMeal, 1);
+    $http.delete('http://localhost:3000/meals/' + meal.id).success(function(data) {
+      $scope.meals[$scope.meals.length-1].id = meal.id;
+    })
   }
 
   formatDate = function(date) {
