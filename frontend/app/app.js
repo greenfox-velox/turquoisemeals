@@ -36,14 +36,13 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
       deleted: false
     }
     $scope.meals.push(mealToAdd);
-
     $scope.newMeal.name = "";
     $scope.newMeal.calories = "";
     $scope.newMeal.date = new Date();
-    $http.post('http://localhost:3000/meals', mealToAdd).success(function(data) {})
-
+    $http.post('http://localhost:3000/meals', mealToAdd).success(function(data) {
+      $scope.meals[$scope.meals.length-1].id = data.meal.id;
+    })
   }
-
 
   $http.get('http://localhost:3000/meals').success(function(data) {
     $scope.meals = data.meals;
