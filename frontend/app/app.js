@@ -1,4 +1,4 @@
-var myMealApp = angular.module('turqoiseMealApp', ['ngRoute']);
+var myMealApp = angular.module('turquoiseMealApp', ['ngRoute']);
 
 myMealApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
