@@ -27,7 +27,7 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
         name: $scope.newMeal.name,
         calories: $scope.newMeal.calories,
         date: $scope.newMeal.date,
-        available: true
+        deleted: false
     });
 
     $scope.newMeal.name = "";
