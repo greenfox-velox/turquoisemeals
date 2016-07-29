@@ -49,6 +49,11 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
 
   $http.get('http://localhost:3000/meals').success(function(data) {
     $scope.meals = data.meals;
-    $scope.sumcalories = data.meals.reduce(function (pv, cv) { return pv + cv.calories; }, 0);
+    $scope.sumcalories = data.meals.reduce(function (pv, cv) {
+      if (!cv.deleted) {
+        pv += cv.calories;
+      }
+      return pv;
+    }, 0);
   })
 }]);
