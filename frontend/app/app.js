@@ -42,8 +42,13 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     $scope.sumcalories += difference;
   }
 
+  clearInputFields = function() {
+    $scope.newMeal.name = '';
+    $scope.newMeal.calories = '';
+    $scope.newMeal.date = new Date();
+  }
+
   $scope.clearFilterInput = function() {
-    console.log('hello');
     $scope.search = '';
   }
 
@@ -60,9 +65,7 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     }
     $scope.meals.push(mealToAdd);
     changeCalories(parseInt(mealToAdd.calories, 10));
-    $scope.newMeal.name = '';
-    $scope.newMeal.calories = '';
-    $scope.newMeal.date = new Date();
+    clearInputFields();
     $http.post('http://localhost:3000/meals', mealToAdd).success(function(data) {
       $scope.meals[$scope.meals.length-1].id = data.meal.id;
     })
