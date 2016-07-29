@@ -3,9 +3,9 @@
     <button ng-click="order = 'name'">Order by Name</button>
     <button ng-click="order = 'date'">Order by Date</button>
     <button ng-click="order = 'calories'">Order by Calories</button>
-    <button ng-click="order = 'calories'">Clear filter-field</button>
+    <button ng-click="clearFilterInput()">Clear filter-field</button>
   </div>
-  <input type="text" ng-model="search" placeholder="valami"/>
+  <input type="text" ng-model="search" placeholder="Filter"/>
   <ul>
     <li ng-repeat="meal in meals | orderBy: order | filter: search" ng-hide="meal.deleted">
       <h3>{{meal.name}} - {{meal.calories}} - {{meal.date | date}}</h3>
@@ -14,9 +14,9 @@
   </ul>
   <div>Sum calories: {{sumcalories}}</div>
   <form ng-submit="addMeal()">
-    <input type="text" placeholder="name" ng-model="newMeal.name" />
-    <input type="number" placeholder="calories" ng-model="newMeal.calories" />
-    <input type="date" placeholder="date" ng-model="newMeal.date" />
+    <input type="text" placeholder="Meal" ng-model="newMeal.name" />
+    <input type="number" placeholder="Calories" ng-model="newMeal.calories" />
+    <input type="date" placeholder="Date" ng-model="newMeal.date" />
     <input type="submit" value="Add new one" />
   </form>
 </div>
