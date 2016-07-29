@@ -3,6 +3,7 @@
     <button ng-click="order = 'name'">Order by Name</button>
     <button ng-click="order = 'date'">Order by Date</button>
     <button ng-click="order = 'calories'">Order by Calories</button>
+    <button ng-click="order = 'calories'">Clear filter-field</button>
   </div>
   <input type="text" ng-model="search" placeholder="valami"/>
   <ul>
@@ -14,7 +15,7 @@
   <div>Sum calories: {{sumcalories}}</div>
   <form ng-submit="addMeal()">
     <input type="text" placeholder="name" ng-model="newMeal.name" />
-    <input type="text" placeholder="calories" ng-model="newMeal.calories" />
+    <input type="number" placeholder="calories" ng-model="newMeal.calories" />
     <input type="date" placeholder="date" ng-model="newMeal.date" />
     <input type="submit" value="Add new one" />
   </form>
