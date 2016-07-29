@@ -83,6 +83,13 @@ h3 {
   width: 60%;
 }
 
+.sum {
+  font-size: 36px;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: 1px 1px 3px black;
+}
+
 .filter {
   display: flex;
   justify-content: space-around;
