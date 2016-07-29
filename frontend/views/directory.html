@@ -11,6 +11,7 @@
       <div class="remove" ng-click="removeMeal(meal)">x</div>
     </li>
   </ul>
+  <div>Sum calories: {{sumcalories}}</div>
   <form ng-submit="addMeal()">
     <input type="text" placeholder="name" ng-model="newMeal.name" />
     <input type="text" placeholder="calories" ng-model="newMeal.calories" />
