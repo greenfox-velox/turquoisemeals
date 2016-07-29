@@ -19,9 +19,7 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     var removedMeal = $scope.meals.indexOf(meal);
     $scope.meals.splice(removedMeal, 1);
     changeCalories(-parseInt(meal.calories, 10));
-    $http.delete('http://localhost:3000/meals/' + meal.id).success(function(data) {
-      $scope.meals[$scope.meals.length-1].id = meal.id;
-    })
+    $http.delete('http://localhost:3000/meals/' + meal.id).success(function(data) {})
   }
 
   formatDate = function(date) {
@@ -56,13 +54,16 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     date: new Date()
   }
 
+  var mealMaker =
+      {
+        name: $scope.newMeal.name,
+        calories: $scope.newMeal.calories,
+        date: formatDate($scope.newMeal.date),
+        deleted: false
+      }
+
   $scope.addMeal = function() {
-    var mealToAdd = {
-      name: $scope.newMeal.name,
-      calories: $scope.newMeal.calories,
-      date: formatDate($scope.newMeal.date),
-      deleted: false
-    }
+    var mealToAdd = new mealMaker;
     $scope.meals.push(mealToAdd);
     changeCalories(parseInt(mealToAdd.calories, 10));
     clearInputFields();
