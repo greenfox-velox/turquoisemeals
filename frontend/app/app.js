@@ -27,6 +27,16 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     return (date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.getHours() + '-' + date.getMinutes());
   }
 
+  calculateCalories = function(visibleMeals) {
+    let output = visibleMeals.reduce(function (pv, cv) {
+      if (!cv.deleted) {
+        pv += cv.calories;
+      }
+      return pv;
+    }, 0);
+    return output;
+  }
+
   $scope.newMeal = {
     date: new Date()
   }
@@ -49,11 +59,6 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
 
   $http.get('http://localhost:3000/meals').success(function(data) {
     $scope.meals = data.meals;
-    $scope.sumcalories = data.meals.reduce(function (pv, cv) {
-      if (!cv.deleted) {
-        pv += cv.calories;
-      }
-      return pv;
-    }, 0);
+    $scope.sumcalories = calculateCalories(data.meals);
   })
 }]);
