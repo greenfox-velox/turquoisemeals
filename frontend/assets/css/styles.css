@@ -159,7 +159,7 @@ h3 {
 }
 
 .content input[type="submit"]:last-child {
-  width: 150px;
+  width: 200px;
   display: block;
   margin: 20px auto 0;
   text-align: center;
