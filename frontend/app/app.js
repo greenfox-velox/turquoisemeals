@@ -18,6 +18,7 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
   $scope.removeMeal = function(meal) {
     var removedMeal = $scope.meals.indexOf(meal);
     $scope.meals.splice(removedMeal, 1);
+    changeCalories(-parseInt(meal.calories, 10));
     $http.delete('http://localhost:3000/meals/' + meal.id).success(function(data) {
       $scope.meals[$scope.meals.length-1].id = meal.id;
     })
@@ -37,6 +38,10 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     return output;
   }
 
+  changeCalories = function(difference) {
+    $scope.sumcalories += difference;
+  }
+
   $scope.newMeal = {
     date: new Date()
   }
@@ -49,6 +54,7 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
       deleted: false
     }
     $scope.meals.push(mealToAdd);
+    changeCalories(parseInt(mealToAdd.calories, 10));
     $scope.newMeal.name = "";
     $scope.newMeal.calories = "";
     $scope.newMeal.date = new Date();
