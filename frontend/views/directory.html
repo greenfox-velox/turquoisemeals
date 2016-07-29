@@ -8,9 +8,6 @@
     <input type="text" ng-model="search" placeholder="Filter"/>
     <button class="filter-clear" ng-click="clearFilterInput()">Clear filter-field</button>
   </section>
-    <button ng-click="clearFilterInput()">Clear filter-field</button>
-  </div>
-  <input type="text" ng-model="search" placeholder="Filter"/>
   <ul>
     <li ng-repeat="meal in meals | orderBy: order | filter: search" ng-hide="meal.deleted">
       <h3>{{meal.name}} - {{meal.calories}} - {{meal.date | date}}</h3>
