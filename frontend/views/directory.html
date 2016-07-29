@@ -5,7 +5,7 @@
     <button ng-click="order = 'calories'">Order by Calories</button>
   </div>
   <section class="filter">
-    <input type="text" ng-model="search" placeholder="Filter"/>
+    <input class="input-field" type="text" ng-model="search" placeholder="Filter"/>
     <button class="filter-clear" ng-click="clearFilterInput()">Clear filter-field</button>
   </section>
   <ul>
@@ -14,11 +14,11 @@
       <div class="remove" ng-click="removeMeal(meal)">x</div>
     </li>
   </ul>
-  <div>Sum calories: {{sumcalories}}</div>
+  <div class="sum">Sum calories: {{sumcalories}}</div>
   <form ng-submit="addMeal()">
     <input type="text" placeholder="Meal" ng-model="newMeal.name" />
     <input type="number" placeholder="Calories" ng-model="newMeal.calories" />
-    <input type="date" placeholder="Date" ng-model="newMeal.date" />
+    <input class="date-field" type="date" placeholder="Date" ng-model="newMeal.date" />
     <input type="submit" value="Add new one" />
   </form>
 </div>
