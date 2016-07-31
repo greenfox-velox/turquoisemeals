@@ -26,8 +26,8 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     return (date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.getHours() + '-' + date.getMinutes());
   }
 
-  calculateCalories = function(visibleMeals) {
-    let output = visibleMeals.reduce(function (pv, cv) {
+  calculateCalories = function(allMeals) {
+    let output = allMeals.reduce(function (pv, cv) {
       if (!cv.deleted) {
         pv += cv.calories;
       }
