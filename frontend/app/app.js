@@ -54,16 +54,17 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     date: new Date()
   }
 
-  var mealMaker =
-      {
-        name: $scope.newMeal.name,
-        calories: $scope.newMeal.calories,
-        date: formatDate($scope.newMeal.date),
-        deleted: false
-      }
+  function mealMaker(){
+    return {
+      name: $scope.newMeal.name,
+      calories: $scope.newMeal.calories,
+      date: formatDate($scope.newMeal.date),
+      deleted: false
+    };
+  }
 
   $scope.addMeal = function() {
-    var mealToAdd = new mealMaker;
+    var mealToAdd = mealMaker();
     $scope.meals.push(mealToAdd);
     changeCalories(parseInt(mealToAdd.calories, 10));
     clearInputFields();
