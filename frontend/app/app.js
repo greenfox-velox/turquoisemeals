@@ -19,15 +19,15 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     var removedMeal = $scope.meals.indexOf(meal);
     $scope.meals.splice(removedMeal, 1);
     changeCalories(-parseInt(meal.calories, 10));
-    $http.delete('http://localhost:3000/meals/' + meal.id).success(function(data) {})
+    $http.delete('http://localhost:3000/meals/' + meal.id).success(function() {});
+  };
+
+  function formatDate(date) {
+    return (date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + '-' + date.getMinutes());
   }
 
-  formatDate = function(date) {
-    return (date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.getHours() + '-' + date.getMinutes());
-  }
-
-  calculateCalories = function(allMeals) {
-    let output = allMeals.reduce(function (pv, cv) {
+  function calculateCalories(allMeals) {
+    let output = allMeals.reduce(function(pv, cv) {
       if (!cv.deleted) {
         pv += cv.calories;
       }
@@ -36,11 +36,11 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     return output;
   }
 
-  changeCalories = function(difference) {
+  function changeCalories(difference) {
     $scope.sumcalories += difference;
   }
 
-  clearInputFields = function() {
+  function clearInputFields() {
     $scope.newMeal.name = '';
     $scope.newMeal.calories = '';
     $scope.newMeal.date = new Date();
@@ -48,13 +48,13 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
 
   $scope.clearFilterInput = function() {
     $scope.search = '';
-  }
+  };
 
   $scope.newMeal = {
     date: new Date()
-  }
+  };
 
-  function mealMaker(){
+  function mealMaker() {
     return {
       name: $scope.newMeal.name,
       calories: $scope.newMeal.calories,
@@ -69,12 +69,12 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
     changeCalories(parseInt(mealToAdd.calories, 10));
     clearInputFields();
     $http.post('http://localhost:3000/meals', mealToAdd).success(function(data) {
-      $scope.meals[$scope.meals.length-1].id = data.meal.id;
-    })
-  }
+      $scope.meals[$scope.meals.length - 1].id = data.meal.id;
+    });
+  };
 
   $http.get('http://localhost:3000/meals').success(function(data) {
     $scope.meals = data.meals;
     $scope.sumcalories = calculateCalories(data.meals);
-  })
+  });
 }]);
