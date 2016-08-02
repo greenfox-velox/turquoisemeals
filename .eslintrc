@@ -1,5 +1,8 @@
 /* Based on https://github.com/FreeCodeCamp/freecodecamp/blob/staging/.eslintrc */
 {
+  "globals": {
+    "angular": true
+    },
   "ecmaFeatures": {
     "jsx": true
     },
