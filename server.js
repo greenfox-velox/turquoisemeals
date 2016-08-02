@@ -12,25 +12,25 @@ app.use(express.static('frontend'));
 var myMeals = db(connect.connection);
 
 app.post('/meals', function(req, res) {
-  myMeals.addMeal(req.body, function (result) {
+  myMeals.addMeal(req.body, function(result) {
     res.send(result);
   });
 });
 
 app.get('/meals', function(req, res) {
   if (req.query.date) {
-    myMeals.filterMeals(req.query.date, function (result) {
+    myMeals.filterMeals(req.query.date, function(result) {
       res.send(result);
     });
   } else {
-    myMeals.getMeal(function (result) {
+    myMeals.getMeal(function(result) {
       res.send(result);
     });
   }
 });
 
 app.delete('/meals/:id', function(req, res) {
-  myMeals.delMeal(req.params.id, function (result) {
+  myMeals.delMeal(req.params.id, function(result) {
     res.send(result);
   });
 });
