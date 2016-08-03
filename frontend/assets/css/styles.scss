@@ -116,8 +116,8 @@ h3 {
 
 .content {
   padding: 10px;
-  transition: 1s;
   button {
+    transition: 1s;
     background: $buttonColor;
     &:hover {
       background: lighten($headerColor, 2);
@@ -134,6 +134,7 @@ h3 {
     padding: 0;
     list-style-type: none;
     margin: 15px 0;
+    max-height: 400px;
   }
   li {
     padding: 10px 20px;
