@@ -1,18 +1,18 @@
-var myMealApp = angular.module('turquoiseMealApp', ['ngRoute']);
+var myMealApp = angular.module('turquoiseMealApp', []);
 
-myMealApp.config(['$routeProvider', function($routeProvider) {
-  $routeProvider
-    .when('/home', {
-      templateUrl: 'views/home.html',
-      controller: 'mealController'
-    })
-    .when('/directory', {
-      templateUrl: 'views/directory.html',
-      controller: 'mealController'
-    }).otherwise({
-      redirectTo: '/home'
-    });
-}]);
+// myMealApp.config(['$routeProvider', function($routeProvider) {
+//   $routeProvider
+//     .when('/home', {
+//       templateUrl: 'views/home.html',
+//       controller: 'mealController'
+//     })
+//     .when('/directory', {
+//       templateUrl: 'views/directory.html',
+//       controller: 'mealController'
+//     }).otherwise({
+//       redirectTo: '/home'
+//     });
+// }]);
 
 myMealApp.controller('mealController', ['$scope', '$http', function($scope, $http) {
   $scope.removeMeal = function(meal) {

@@ -14,14 +14,29 @@ describe('Testing AngularJS Test Suite', function() {
 
     });
 
-    it('should initailize the title in the scope', function() {
+    it('should initailize the newMeal scope', function() {
       expect(scope.newMeal).toBeDefined();
-    //   expect(scope.title).toBe("Testing AngularJS Application");
     });
 
-    // it('should add 2 destination to the destination list', function() {
-    //   expect(scope.destinations).toBeDefined();
-    //   expect(scope.destinations.length).toBe(0);
+    it('should add 1 meal to the meal list and clear input fields after', function() {
+      scope.meals = [];
+      scope.sumcalories = 0;
+      scope.newMeal.name = 'apple';
+      scope.newMeal.calories = 25;
+      scope.newMeal.date = new Date(1982, 5, 26, 10, 20);
+      scope.addMeal();
+      expect(scope.meals).toBeDefined();
+      expect(scope.meals.length).toBe(1);
+      expect(scope.meals[0].name).toBe('apple');
+      expect(scope.meals[0].calories).toBe(25);
+      expect(scope.meals[0].date).toBe('1982-6-26 10-20');
+      expect(scope.meals[0].deleted).toBe(false);
+      expect(scope.newMeal.name).toBe('');
+      expect(scope.newMeal.calories).toBe('');
+      expect(scope.sumcalories).toBe(25);
+      // expect(scope.newMeal.date).toBe(new Date());
+
+    });
     //
     //   scope.newDestination = {
     //     city: "London",
@@ -31,8 +46,6 @@ describe('Testing AngularJS Test Suite', function() {
       // scope.addDestination();
       //
       // expect(scope.destinations.length).toBe(1);
-      // expect(scope.destinations[0].city).toBe("London");
-      // expect(scope.destinations[0].country).toBe("England");
       //
       // scope.newDestination = {
       //   city: "Frankfurt",
@@ -47,6 +60,5 @@ describe('Testing AngularJS Test Suite', function() {
       // expect(scope.destinations[0].city).toBe("London");
       // expect(scope.destinations[0].country).toBe("England");
 
-    // });
   });
 });
