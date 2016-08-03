@@ -120,6 +120,7 @@ h3 {
 
 .content {
   padding: 10px;
+  transition: 1s;
 }
 
 .content button {
@@ -128,6 +129,7 @@ h3 {
 
 .content button:hover {
   background: #00ba87;
+  transform: rotate(360deg);
 }
 
 .content button, .content input[type="submit"] {

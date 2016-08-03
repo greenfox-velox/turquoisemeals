@@ -116,10 +116,12 @@ h3 {
 
 .content {
   padding: 10px;
+  transition: 1s;
   button {
     background: $buttonColor;
     &:hover {
       background: lighten($headerColor, 2);
+      transform: rotate(360deg);
     }
   }
   button, input[type="submit"] {
