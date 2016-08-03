@@ -1,0 +1,170 @@
+@import "variables";
+@import "mixins";
+
+body {
+  font-family: 'Acme', sans-serif;
+  margin: 0;
+  background-color: $bgColor;
+}
+
+main {
+  background:	$containerColor;
+  width: 80%;
+  padding:10px 50px;
+  margin: 10px auto;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px black;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  color: white;
+}
+
+img {
+  width: 70%;
+  margin: 15px auto;
+  max-height: 500px;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3 {
+  margin: 5px;
+  font-family: 'Acme', sans-serif;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.calories {
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-left: 5px;
+  color: #fff;
+  font-size: 15px;
+}
+
+#menu-bar {
+  background: $headerColor;
+  color: #fff;
+  padding: 10px 50px;
+  font-family: 'Acme', sans-serif;
+  h1 {
+    font-size: 30px;
+    font-weight: normal;
+    display: inline-block;
+  }
+  ul {
+    float: right;
+    font-family: 'Acme', sans-serif;
+    font-size: $listSize;
+    list-style-type: none;
+    padding: 0;
+    margin: 6px 0;
+    letter-spacing: 3px;
+  }
+  li {
+    float: right;
+    margin-left: 20px;
+    &:hover {
+      background-color: lighten($headerColor, 10);
+    width: (100% / 8);
+    }
+  }
+  a {
+    color: #fff
+  }
+}
+
+.buttons {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;;
+  margin-bottom: 10px;
+}
+
+.content .input-field {
+  width: 60%;
+}
+
+.sum {
+  font-size: $sumSize;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: 1px 1px 3px black;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.filter-clear {
+  width: 240px;
+  height: 60px;
+  font-size: 26px;
+  background: $buttonColor;
+}
+
+.content {
+  padding: 10px;
+  button {
+    background: $buttonColor;
+  }
+  button, input[type="submit"] {
+    @include inputButton;
+  }
+  ul {
+    padding: 0;
+    list-style-type: none;
+    margin: 15px 0;
+  }
+  li {
+    padding: 10px 20px;
+    border-top: 1px solid #e2e2e2;
+    color: #F5F5F5;
+    span {
+      float: right;
+    }
+    h3 {
+      display: inline-block;
+      font-weight: normal;
+      font-size: 22px;
+    }
+  }
+  input {
+    justify-content: center;
+    width: 94%;
+    padding: 2px 20px;
+    border-radius: 10px;
+    border: 3px solid #a3a375;
+    margin: 10px 0;
+    font-size: $inputSize;
+    box-shadow: 2px 2px 2px black;
+  }
+  input[type="submit"]:last-child {
+    width: 200px;
+    display: block;
+    margin: 20px auto 0;
+    text-align: center;
+  }
+}
+
+.date-field {
+  width: 94%;
+  height: 38px;
+  font-size: 30px;
+}
+
+.remove {
+  float: right;
+  padding: 5px;
+  background: #fff;
+  width: 18px;
+  text-align: center;
+  border-radius: 20px;
+  color: black;
+  cursor: pointer;
+  margin-left: 10px;
+}
