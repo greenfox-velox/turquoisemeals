@@ -10,3 +10,17 @@
   font-weight: bold;
   box-shadow: 2px 2px 2px black;
 }
+
+@mixin clearFix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both
+  }
+}
+
+@mixin mQ($arg) {
+  @media screen and (max-width: $arg) {
+    @content;
+  }
+}

@@ -1,11 +1,11 @@
 body {
   font-family: 'Acme', sans-serif;
   margin: 0;
-  background-color: #B0C4DE;
+  background-color: #003040;
 }
 
 main {
-  background: #008080;
+  background: #008040;
   width: 80%;
   padding: 10px 50px;
   margin: 10px auto;
@@ -42,16 +42,24 @@ h3 {
 }
 
 #menu-bar {
-  background: #000080;
+  background-color: #00b080;
   color: #fff;
   padding: 10px 50px;
   font-family: 'Acme', sans-serif;
+}
+
+#menu-bar:hover {
+  background-color: #404040;
 }
 
 #menu-bar h1 {
   font-size: 30px;
   font-weight: normal;
   display: inline-block;
+}
+
+#menu-bar h1:hover {
+  background-color: #00e3a5;
 }
 
 #menu-bar ul {
@@ -66,12 +74,11 @@ h3 {
 
 #menu-bar li {
   float: right;
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 #menu-bar li:hover {
-  background-color: #0000b3;
-  width: 12.5%;
+  background-color: #00e3a5;
 }
 
 #menu-bar a {
@@ -90,6 +97,8 @@ h3 {
 }
 
 .sum {
+  clear: both;
+  display: block;
   font-size: 40px;
   font-weight: normal;
   text-align: center;
@@ -106,7 +115,7 @@ h3 {
   width: 240px;
   height: 60px;
   font-size: 26px;
-  background: linear-gradient(#556B2F, #2F4F4F);
+  background: linear-gradient(#156B2F, #2F424F);
 }
 
 .content {
@@ -114,11 +123,15 @@ h3 {
 }
 
 .content button {
-  background: linear-gradient(#556B2F, #2F4F4F);
+  background: linear-gradient(#156B2F, #2F424F);
+}
+
+.content button:hover {
+  background: #00ba87;
 }
 
 .content button, .content input[type="submit"] {
-  background: linear-gradient(#556B2F, #2F4F4F);
+  background: linear-gradient(#156B2F, #2F424F);
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -128,6 +141,10 @@ h3 {
   font-size: 20px;
   font-weight: bold;
   box-shadow: 2px 2px 2px black;
+}
+
+.content button:hover, .content input[type="submit"]:hover {
+  background: #00ba87;
 }
 
 .content ul {
@@ -140,6 +157,18 @@ h3 {
   padding: 10px 20px;
   border-top: 1px solid #e2e2e2;
   color: #F5F5F5;
+  float: left;
+  width: 80%;
+}
+
+@media screen and (max-width: 1000px) {
+  .content li {
+    width: 95%;
+  }
+}
+
+.content li:hover {
+  background: #008f48;
 }
 
 .content li span {
