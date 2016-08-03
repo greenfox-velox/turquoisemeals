@@ -45,14 +45,20 @@ h3 {
 }
 
 #menu-bar {
-  background: $headerColor;
+  background-color: $headerColor;
   color: #fff;
   padding: 10px 50px;
   font-family: 'Acme', sans-serif;
+  &:hover {
+    background-color: grayscale($containerColor);
+  }
   h1 {
     font-size: 30px;
     font-weight: normal;
     display: inline-block;
+    &:hover {
+      background-color: lighten($headerColor, 10);
+    }
   }
   ul {
     float: right;
@@ -65,10 +71,9 @@ h3 {
   }
   li {
     float: right;
-    margin-left: 20px;
+    margin-left: 50px;
     &:hover {
       background-color: lighten($headerColor, 10);
-    width: (100% / 8);
     }
   }
   a {
@@ -88,6 +93,8 @@ h3 {
 }
 
 .sum {
+  clear: both;
+  display: block;
   font-size: $sumSize;
   font-weight: normal;
   text-align: center;
@@ -109,11 +116,19 @@ h3 {
 
 .content {
   padding: 10px;
+  transition: 1s;
   button {
     background: $buttonColor;
+    &:hover {
+      background: lighten($headerColor, 2);
+      transform: rotate(360deg);
+    }
   }
   button, input[type="submit"] {
     @include inputButton;
+    &:hover {
+      background: lighten($headerColor, 2);
+    }
   }
   ul {
     padding: 0;
@@ -124,6 +139,14 @@ h3 {
     padding: 10px 20px;
     border-top: 1px solid #e2e2e2;
     color: #F5F5F5;
+    float: left;
+    width: 80%;
+    @include mQ(1000px) {
+      width: 95%;
+    }
+    &:hover {
+      background: lighten($containerColor, 3);
+    }
     span {
       float: right;
     }
