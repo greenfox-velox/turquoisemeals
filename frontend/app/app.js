@@ -1,18 +1,18 @@
-var myMealApp = angular.module('turquoiseMealApp', []);
+var myMealApp = angular.module('turquoiseMealApp', ['ngRoute']);
 
-// myMealApp.config(['$routeProvider', function($routeProvider) {
-//   $routeProvider
-//     .when('/home', {
-//       templateUrl: 'views/home.html',
-//       controller: 'mealController'
-//     })
-//     .when('/directory', {
-//       templateUrl: 'views/directory.html',
-//       controller: 'mealController'
-//     }).otherwise({
-//       redirectTo: '/home'
-//     });
-// }]);
+myMealApp.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/home', {
+      templateUrl: 'views/home.html',
+      controller: 'mealController'
+    })
+    .when('/directory', {
+      templateUrl: 'views/directory.html',
+      controller: 'mealController'
+    }).otherwise({
+      redirectTo: '/home'
+    });
+}]);
 
 myMealApp.controller('mealController', ['$scope', '$http', function($scope, $http) {
   $scope.removeMeal = function(meal) {
@@ -27,11 +27,8 @@ myMealApp.controller('mealController', ['$scope', '$http', function($scope, $htt
   }
 
   function calculateCalories(allMeals) {
-    let output = allMeals.reduce(function(pv, cv) {
-      if (!cv.deleted) {
-        pv += cv.calories;
-      }
-      return pv;
+    var output = allMeals.reduce(function(pv, cv) {
+      return cv.deleted ? pv : pv + cv.calories;
     }, 0);
     return output;
   }

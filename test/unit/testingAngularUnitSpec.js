@@ -1,13 +1,12 @@
 describe('Testing AngularJS Test Suite', function() {
-
   beforeEach(module('turquoiseMealApp'));
 
   describe('Testing AngularJS Controller', function() {
-    var scope, ctrl;
+    var scope;
 
     beforeEach(inject(function($controller, $rootScope) {
       scope = $rootScope.$new();
-      ctrl = $controller('mealController', {$scope:scope});
+      $controller('mealController', {$scope: scope});
     }));
 
     afterEach(function() {
@@ -35,7 +34,6 @@ describe('Testing AngularJS Test Suite', function() {
       expect(scope.newMeal.calories).toBe('');
       expect(scope.sumcalories).toBe(25);
       // expect(scope.newMeal.date).toBe(new Date());
-
     });
     //
     //   scope.newDestination = {
@@ -59,6 +57,5 @@ describe('Testing AngularJS Test Suite', function() {
       // expect(scope.destinations[1].country).toBe("Germany");
       // expect(scope.destinations[0].city).toBe("London");
       // expect(scope.destinations[0].country).toBe("England");
-
   });
 });

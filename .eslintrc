@@ -1,14 +1,16 @@
 /* Based on https://github.com/FreeCodeCamp/freecodecamp/blob/staging/.eslintrc */
 {
   "globals": {
-    "angular": true
+    "angular": true,
+    "inject": true
     },
   "ecmaFeatures": {
     "jsx": true
     },
   "env": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
     "browser": true,                 // browser global variables
-    "node": true                     // Node.js global variables and Node.js-specific rules
+    "node": true,
+    "jasmine": true                     // Node.js global variables and Node.js-specific rules
     },
   "parser": "babel-eslint",          // https://github.com/babel/babel-eslint
   "plugins": [
