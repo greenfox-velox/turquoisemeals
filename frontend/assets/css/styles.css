@@ -5,9 +5,9 @@ body {
 }
 
 main {
-  background:	#008080;
+  background: #008080;
   width: 80%;
-  padding:10px 50px;
+  padding: 10px 50px;
   margin: 10px auto;
   border-radius: 20px;
   box-shadow: 2px 2px 2px black;
@@ -69,14 +69,19 @@ h3 {
   margin-left: 20px;
 }
 
+#menu-bar li:hover {
+  background-color: #0000b3;
+  width: 12.5%;
+}
+
 #menu-bar a {
-  color: #fff
+  color: #fff;
 }
 
 .buttons {
   padding: 10px 0;
   display: flex;
-  justify-content: space-around;;
+  justify-content: space-around;
   margin-bottom: 10px;
 }
 
@@ -85,7 +90,7 @@ h3 {
 }
 
 .sum {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: normal;
   text-align: center;
   text-shadow: 1px 1px 3px black;
@@ -112,9 +117,8 @@ h3 {
   background: linear-gradient(#556B2F, #2F4F4F);
 }
 
-.content button,
-.content input[type="submit"] {
-  background: linear-gradient(#999966, #6b6b47);
+.content button, .content input[type="submit"] {
+  background: linear-gradient(#556B2F, #2F4F4F);
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
