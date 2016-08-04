@@ -1,10 +1,11 @@
-@import "variables";
-@import "mixins";
+@import "variables.scss";
+@import "mixins.scss";
 
 body {
   font-family: 'Acme', sans-serif;
   margin: 0;
   background-color: $bgColor;
+  width: (100% / 5);
 }
 
 main {
