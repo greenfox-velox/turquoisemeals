@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
+var Server = require('karma').Server;
 
 gulp.task('sass', function() {
   return gulp.src('frontend/assets/css/**/*.scss')
@@ -13,9 +14,8 @@ gulp.task('sass', function() {
 
 gulp.task('browserSync', function() {
   browserSync.init({
-    server: {
-      baseDir: 'frontend/assets/'
-    }
+    proxy: 'http://localhost:3000',
+    port: 7000
   });
 });
 
