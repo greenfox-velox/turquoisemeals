@@ -1,5 +1,8 @@
 'use strict';
 
-var app = require('./server');
+var newApp = require('./server');
+var connect = require('./connect');
+
+var app = newApp(connect.connection);
 
 app.listen(3000);
