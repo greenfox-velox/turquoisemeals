@@ -1,9 +1,8 @@
 var sqlEntry = {
-  database: 'sql7130714',
-  host: 'sql7.freemysqlhosting.net',
-  port: '3306',
-  user: 'sql7130714',
-  password: 'SHJx3IubQ7'
+  database: process.env.DB_DATABASE,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS
 };
 
 module.exports.sqlEntry = sqlEntry;
