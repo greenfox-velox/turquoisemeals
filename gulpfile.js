@@ -10,9 +10,9 @@ var Server = require('karma').Server;
 // var gutil = require('gulp-util');
 
 gulp.task('sass', function() {
-  return gulp.src('frontend/assets/css/**/*.scss')
+  return gulp.src('./**/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest('frontend/assets/css'))
+    .pipe(gulp.dest('./css'))
     .pipe(browserSync.reload({
       stream: true
     }));
