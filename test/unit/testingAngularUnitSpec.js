@@ -1,6 +1,6 @@
   // testing controller
 describe('mealController', function() {
-  var $httpBackend, $rootScope, createController, authRequestHandler;
+  var $httpBackend, $rootScope, createController;
   var scope;
 
   // Set up the module
@@ -10,13 +10,13 @@ describe('mealController', function() {
     // Set up the mock http service responses
     $httpBackend = $injector.get('$httpBackend');
     // backend definition common for all tests
-    authRequestHandler = $httpBackend.when('GET', 'https://turquoise-calorie-counter.herokuapp.com/meals')
-                          .respond({'meals': [{id: 1, name: 'apple', calories: 25, date: new Date(1982, 5, 26, 10, 20), deleted: false}]});
-    authRequestHandler = $httpBackend.when('POST', 'https://turquoise-calorie-counter.herokuapp.com/meals')
-                          .respond({'meal': [{id: 5, name: 'egg', calories: 25, date: new Date(1982, 5, 26, 10, 20), deleted: false}]});
+    $httpBackend.when('GET', 'https://turquoise-calorie-counter.herokuapp.com/meals')
+      .respond({'meals': [{id: 1, name: 'apple', calories: 25, date: new Date(1982, 5, 26, 10, 20), deleted: false}]});
+    $httpBackend.when('POST', 'https://turquoise-calorie-counter.herokuapp.com/meals')
+      .respond({'meal': [{id: 5, name: 'egg', calories: 25, date: new Date(1982, 5, 26, 10, 20), deleted: false}]});
     // Get hold of a scope (i.e. the root scope)
-    authRequestHandler = $httpBackend.when('DELETE', 'https://turquoise-calorie-counter.herokuapp.com/meals/5')
-                          .respond({});
+    $httpBackend.when('DELETE', 'https://turquoise-calorie-counter.herokuapp.com/meals/5')
+      .respond({});
     // Get hold of a scope (i.e. the root scope)
     $rootScope = $injector.get('$rootScope');
     // The $controller service is used to create instances of controllers
