@@ -10,12 +10,12 @@ describe('mealController', function() {
     // Set up the mock http service responses
     $httpBackend = $injector.get('$httpBackend');
     // backend definition common for all tests
-    authRequestHandler = $httpBackend.when('GET', 'http://localhost:3000/meals')
+    authRequestHandler = $httpBackend.when('GET', 'https://localhost:3000/meals')
                           .respond({'meals': [{id: 1, name: 'apple', calories: 25, date: new Date(1982, 5, 26, 10, 20), deleted: false}]});
-    authRequestHandler = $httpBackend.when('POST', 'http://localhost:3000/meals')
+    authRequestHandler = $httpBackend.when('POST', 'https://localhost:3000/meals')
                           .respond({'meal': [{id: 5, name: 'egg', calories: 25, date: new Date(1982, 5, 26, 10, 20), deleted: false}]});
     // Get hold of a scope (i.e. the root scope)
-    authRequestHandler = $httpBackend.when('DELETE', 'http://localhost:3000/meals/5')
+    authRequestHandler = $httpBackend.when('DELETE', 'https://localhost:3000/meals/5')
                           .respond({});
     // Get hold of a scope (i.e. the root scope)
     $rootScope = $injector.get('$rootScope');
@@ -34,7 +34,7 @@ describe('mealController', function() {
   });
 
   it('should get 1 meal from the with $http', function() {
-    $httpBackend.expectGET('http://localhost:3000/meals');
+    $httpBackend.expectGET('https://localhost:3000/meals');
     var controller = createController();
     $httpBackend.flush();
     expect(scope.meals).toBeDefined();
@@ -71,20 +71,20 @@ describe('mealController', function() {
   });
 
   it('should add 1 meal with $http', function() {
-    $httpBackend.expectGET('http://localhost:3000/meals');
+    $httpBackend.expectGET('https://localhost:3000/meals');
     var controller = createController();
     scope.meals = [];
     scope.newMeal.name = 'egg';
     scope.newMeal.calories = 25;
     scope.newMeal.date = new Date(1982, 5, 26, 10, 20);
     scope.addMeal();
-    $httpBackend.expectPOST('http://localhost:3000/meals', JSON.stringify({name: 'egg', calories: 25, date: '1982-6-26 10-20', deleted: false}));
+    $httpBackend.expectPOST('https://localhost:3000/meals', JSON.stringify({name: 'egg', calories: 25, date: '1982-6-26 10-20', deleted: false}));
     $httpBackend.flush();
     expect(scope.meals.length).toBe(1);
   });
 
   it('should delete 1 meal with $http', function() {
-    $httpBackend.expectGET('http://localhost:3000/meals');
+    $httpBackend.expectGET('https://localhost:3000/meals');
     var controller = createController();
     scope.meals = [];
     expect(scope.meals.length).toBe(0);
@@ -95,7 +95,7 @@ describe('mealController', function() {
     expect(scope.meals.length).toBe(1);
     scope.meals[scope.meals.length - 1].id = 5;
     scope.removeMeal({name : 'egg', calories : 25, date : '1982-6-26 10-20', deleted : false, id : 5});
-    $httpBackend.expectDELETE('http://localhost:3000/meals/5');
+    $httpBackend.expectDELETE('https://localhost:3000/meals/5');
     expect(scope.meals.length).toBe(0);
     $httpBackend.flush();
   });

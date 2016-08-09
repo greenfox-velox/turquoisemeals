@@ -5,5 +5,11 @@ var sqlEntry = {
   user: 'sql7130714',
   password: 'SHJx3IubQ7'
 };
+// var sqlEntry = {
+//   database: 'caloriecounter',
+//   host: '127.0.0.1',
+//   user: 'root',
+//   password: 'velox'
+// };
 
 module.exports.sqlEntry = sqlEntry;
