@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('./db');
+var db = require('./db');
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -10,8 +10,8 @@ function newApp(connection) {
   app.use(bodyParser.json());
   app.use(express.static('frontend'));
   app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
   });
 
